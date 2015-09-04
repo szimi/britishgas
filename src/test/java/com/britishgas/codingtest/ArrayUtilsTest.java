@@ -19,7 +19,7 @@ public class ArrayUtilsTest {
     }
 
     @Test
-    public void shouldReturnIndex() throws Exception {
+    public void shouldReturnIndex() {
         //given
         Integer[] target = {2, 3, 4, 5, 1, 32, 4};
 
@@ -37,7 +37,7 @@ public class ArrayUtilsTest {
     }
 
     @Test
-    public void shouldReturnIndexNotFound() throws Exception {
+    public void shouldReturnIndexNotFound() {
         //given
         Integer[] target = {2, 3, 4, 5, 1, 32, 4};
 
@@ -54,7 +54,7 @@ public class ArrayUtilsTest {
     }
 
     @Test
-    public void shouldReturnIndexNotIfValueIsEmpty() throws Exception {
+    public void shouldReturnIndexNotFoundIfValueIsEmpty() {
         //given
         Integer[] target = {2, 3, 4, 5, 1, 32, 4};
 
@@ -71,7 +71,7 @@ public class ArrayUtilsTest {
     }
 
     @Test
-    public void shouldReturnIndexNotIfTargetIsEmpty() throws Exception {
+    public void shouldReturnIndexNotFoundtIfTargetIsEmpty() {
         //given
         Integer[] target = {};
 
@@ -83,6 +83,22 @@ public class ArrayUtilsTest {
 
         //then
         Integer expectedResult = -1;
+
+        assertThat(result, is(expectedResult));
+    }
+
+    @Test
+    public void shouldReturnZeroIfArraysAreIdentical() {
+        Integer[] target = { 123 };
+
+        //and
+        Integer[] value = { 123 };
+
+        //when
+        Integer result = arrayUtils.indexOf(target, value);
+
+        //then
+        Integer expectedResult = 0;
 
         assertThat(result, is(expectedResult));
     }
